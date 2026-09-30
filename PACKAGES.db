@@ -1,0 +1,70 @@
+name=micro
+version=2.0.14
+release=1
+description=Nowoczesny edytor tekstu ze wsparciem myszki i podswietlaniem skladni
+depends=
+arch=x86_64
+size=11681792
+filename=packages/micro-2.0.14-1-x86_64.wpkg
+sha256=b5a8aa9edeaf46673c7546c5100396101b6dcda81da095ee07ff40a41f604fdf
+
+name=dejavu-fonts
+version=2.37
+release=1
+description=Czcionki TrueType DejaVu dla srodowiska graficznego
+depends=
+arch=x86_64
+size=2903856
+filename=packages/dejavu-fonts-2.37-1-x86_64.wpkg
+sha256=fd722a207d206e75672815dfe672bb156b90fce6eaef3eadf14b0cf79c4eb1b7
+
+name=wlasnyos-wallpaper
+version=1.0
+release=1
+description=Oficjalna tapeta pulpitu dla WlasnyOS
+depends=
+arch=x86_64
+size=18319
+filename=packages/wlasnyos-wallpaper-1.0-1-x86_64.wpkg
+sha256=13e5cf8b033e66b3e7002b274bae74893fb706c4d9e8c134cf5df760ac05bf05
+
+name=dwm
+version=6.5
+release=1
+description=Minimalistyczny, dynamiczny menedzer okien dla X11
+depends=xorg-server libx11 libxft
+arch=x86_64
+size=93357
+filename=packages/dwm-6.5-1-x86_64.wpkg
+sha256=05a831b89db245ae8e1d3c870ed14b6c8e8c55ad2c0febe90adc9b98515c3bee
+
+name=dmenu
+version=5.3
+release=1
+description=Szybkie menu uruchamiania programow (skrot: Alt+P)
+depends=libx11 libxft
+arch=x86_64
+size=89744
+filename=packages/dmenu-5.3-1-x86_64.wpkg
+sha256=98c10ff8cafbdfb219416713ab9e3a00d78c05f4f289ad3854ad136adcb72718
+
+name=st
+version=0.9.2
+release=1
+description=Lekki, minimalistyczny emulator terminala dla X11
+depends=libx11 libxft
+arch=x86_64
+size=134195
+filename=packages/st-0.9.2-1-x86_64.wpkg
+sha256=4c36b8f3007a8a2ea24607d351ecefef796b92bf9326c8a4e022e65f2775d5c4
+
+name=wlasnyos-desktop
+version=1.0
+release=1
+description=Pelne srodowisko graficzne (DWM, ST, Dmenu, startx-wlasnyos)
+depends=dwm st dmenu dejavu-fonts wlasnyos-wallpaper
+arch=x86_64
+size=21051
+filename=packages/wlasnyos-desktop-1.0-1-x86_64.wpkg
+sha256=9d4d499a9f1ef2f695f9bc6b61afe6bd2640aa6fccb037276d580287354a4172
+
