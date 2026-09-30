@@ -68,3 +68,13 @@ size=21051
 filename=packages/wlasnyos-desktop-1.0-1-x86_64.wpkg
 sha256=9d4d499a9f1ef2f695f9bc6b61afe6bd2640aa6fccb037276d580287354a4172
 
+
+name=wlasnyos-installer
+version=1.0
+release=1
+description=Oficjalny instalator systemu WlasnyOS na dysku twardym lub SSD
+depends=
+arch=x86_64
+size=3940
+filename=wlasnyos-installer-1.0-1-x86_64.wpkg
+sha256=1a70765a24c6d89627725e0c5b9298710dbd820d36e7cc62ad8b45ab95d97cbc
