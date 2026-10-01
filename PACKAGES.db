@@ -60,13 +60,13 @@ sha256=b5a8aa9edeaf46673c7546c5100396101b6dcda81da095ee07ff40a41f604fdf
 
 name=nano
 version=8.1
-release=1
-description=Prosty edytor tekstu (wersja statyczna)
+release=2
+description=Prosty edytor tekstu ze wsparciem terminfo (nano)
 depends=
 arch=x86_64
-size=952316
+size=964624
 filename=packages/nano-8.1-1-x86_64.wpkg
-sha256=8707524b9d39691e1cf41adedd62c7751863f2a593e20e67c0059c1c012859ed
+sha256=0c76fa49868b116147b7d1c7271d81537d9512dee2825b76b6581497ce74f116
 
 name=st
 version=0.9.2
@@ -77,6 +77,16 @@ arch=x86_64
 size=34068
 filename=packages/st-0.9.2-1-x86_64.wpkg
 sha256=fe57499f51e033b542494cb14122b38ee3a74e695016ae5921f39113a3b9e1e4
+
+name=terminfo
+version=6.5
+release=1
+description=Baza definicji terminali ncurses (m.in. linux, xterm, vt100)
+depends=
+arch=x86_64
+size=13120
+filename=packages/terminfo-6.5-1-x86_64.wpkg
+sha256=58017243974ad27acc6bde838986db3b7e2250e807427c9fa5858b240134981e
 
 name=wfetch
 version=1.0
@@ -100,13 +110,13 @@ sha256=9d4d499a9f1ef2f695f9bc6b61afe6bd2640aa6fccb037276d580287354a4172
 
 name=wlasnyos-installer
 version=1.0
-release=1
-description=Oficjalny instalator systemu WlasnyOS na dysku twardym lub SSD
+release=2
+description=Oficjalny instalator systemu WlasnyOS na dysku twardym lub SSD (BIOS + UEFI)
 depends=
 arch=x86_64
-size=4068
+size=130204
 filename=packages/wlasnyos-installer-1.0-1-x86_64.wpkg
-sha256=c0a86ccc83107ca29e5d8601f07c0786f456ad4e483cb987d19725be114f30cb
+sha256=f60e04d4084dba8a617e0cb27b7654700a8397d4930b3b2b9c0d26101dab1d82
 
 name=wlasnyos-wallpaper
 version=1.0
