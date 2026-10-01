@@ -114,9 +114,9 @@ release=3
 description=Oficjalny instalator systemu WlasnyOS na dysku twardym lub SSD (BIOS + UEFI)
 depends=
 arch=x86_64
-size=1138656
+size=1139520
 filename=packages/wlasnyos-installer-1.0-1-x86_64.wpkg
-sha256=aeb5f274c00e4246bf21d5bc3533682290e6b3f8475900c8e645b812ccf2dc8f
+sha256=c04c918d5823214cf706dec58a273f7ddccd66d4b6daab6ebca5f46640acbefa
 
 name=wlasnyos-wallpaper
 version=1.0
