@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=micro
+pkgver=2.0.14
+pkgrel=1
+pkgdesc="Nowoczesny edytor tekstu"
+arch=x86_64
+url="https://micro-editor.github.io/"
+depends=()
+source="https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux64-static.tar.gz"
+sha256sum="SKIP"
+
+build() {
+    # Micro dostarcza prekompilowane binarki
+    true
+}
+
+package() {
+    mkdir -p "${PKGDIR}/usr/bin"
+    cp "micro-${pkgver}/micro" "${PKGDIR}/usr/bin/"
+    chmod +x "${PKGDIR}/usr/bin/micro"
+}

@@ -1,0 +1,24 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=libdrm
+pkgver=2.4.120
+pkgrel=1
+pkgdesc="Biblioteka Direct Rendering Manager"
+arch=x86_64
+url="https://dri.freedesktop.org/"
+depends=()
+source="https://dri.freedesktop.org/libdrm/libdrm-${pkgver}.tar.xz"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    export CC=musl-gcc
+    meson setup build --prefix=/usr
+    ninja -C build
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    DESTDIR="${PKGDIR}" ninja -C build install
+}

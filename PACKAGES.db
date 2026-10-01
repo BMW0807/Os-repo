@@ -110,13 +110,13 @@ sha256=9d4d499a9f1ef2f695f9bc6b61afe6bd2640aa6fccb037276d580287354a4172
 
 name=wlasnyos-installer
 version=1.0
-release=2
+release=3
 description=Oficjalny instalator systemu WlasnyOS na dysku twardym lub SSD (BIOS + UEFI)
 depends=
 arch=x86_64
-size=130204
+size=1138656
 filename=packages/wlasnyos-installer-1.0-1-x86_64.wpkg
-sha256=f60e04d4084dba8a617e0cb27b7654700a8397d4930b3b2b9c0d26101dab1d82
+sha256=aeb5f274c00e4246bf21d5bc3533682290e6b3f8475900c8e645b812ccf2dc8f
 
 name=wlasnyos-wallpaper
 version=1.0

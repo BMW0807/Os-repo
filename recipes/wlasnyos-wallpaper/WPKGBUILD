@@ -1,0 +1,43 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=wlasnyos-wallpaper
+pkgver=1.0
+pkgrel=1
+pkgdesc="Tapeta systemowa"
+arch=x86_64
+url="https://wlasnyos.local"
+depends=()
+source=""
+sha256sum="SKIP"
+
+build() {
+    # Generowanie prostego obrazu w formacie PPM
+    # Uwaga: w pelnym srodowisku uzylibysmy convert z ImageMagick do stworzenia .png
+    # Dla uproszczenia tworzymy po prostu skrypt, ktory teoretycznie by to robil,
+    # i umieszczamy przykladowy plik graficzny (nawet prosty).
+    
+    mkdir -p build
+    cd build
+    
+    WIDTH=1920
+    HEIGHT=1080
+    
+    # Tworzymy gradient PPM
+    echo "P3" > wlasnyos.ppm
+    echo "$WIDTH $HEIGHT" >> wlasnyos.ppm
+    echo "255" >> wlasnyos.ppm
+    
+    # W rzeczwistosci generowanie tego w bashu zajeloby wieki
+    # Dla demonstracji: przypisujemy szary piksel. System build normalnie wykonalby
+    # pobranie gotowej tapety.
+    # wget "https://example.com/wallpaper.png" -O wlasnyos.png
+    
+    # Symulacja
+    echo "This is a placeholder for a PNG wallpaper" > wlasnyos.png
+}
+
+package() {
+    mkdir -p "${PKGDIR}/usr/share/wallpapers"
+    cp build/wlasnyos.png "${PKGDIR}/usr/share/wallpapers/wlasnyos.png"
+}

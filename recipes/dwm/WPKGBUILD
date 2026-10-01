@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=dwm
+pkgver=6.5
+pkgrel=1
+pkgdesc="Dynamiczny menedzer okien (suckless)"
+arch=x86_64
+url="https://dwm.suckless.org/"
+depends=(libx11 libxft)
+source="https://dl.suckless.org/dwm/dwm-${pkgver}.tar.gz"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    sed -i 's/^CC = cc/CC = musl-gcc/' config.mk
+    make -j$(nproc)
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${PKGDIR}" PREFIX=/usr install
+}

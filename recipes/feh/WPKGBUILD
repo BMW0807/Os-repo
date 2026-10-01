@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=feh
+pkgver=3.10.3
+pkgrel=1
+pkgdesc="Przegladarka obrazow / menedzer tapety"
+arch=x86_64
+url="https://feh.finalrewind.org/"
+depends=(libx11 imlib2)
+source="https://feh.finalrewind.org/feh-${pkgver}.tar.bz2"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    sed -i 's/^CC ?= gcc/CC = musl-gcc/' config.mk
+    make -j$(nproc) PREFIX=/usr
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${PKGDIR}" PREFIX=/usr install
+}

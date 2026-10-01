@@ -1,0 +1,49 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=wlasnyos-desktop
+pkgver=1.0
+pkgrel=1
+pkgdesc="Meta-pakiet srodowiska graficznego"
+arch=x86_64
+url="https://wlasnyos.local"
+depends=(dwm st dmenu dejavu-fonts feh wlasnyos-wallpaper xorg-server)
+source=""
+sha256sum="SKIP"
+
+build() {
+    true
+}
+
+package() {
+    mkdir -p "${PKGDIR}/usr/bin"
+    mkdir -p "${PKGDIR}/etc/skel"
+    mkdir -p "${PKGDIR}/usr/share/xsessions"
+
+    # Skrypt startx
+    cat > "${PKGDIR}/usr/bin/startx-wlasnyos" << 'EOF'
+#!/bin/sh
+# Start WlasnyOS Desktop Environment
+export DISPLAY=:0
+feh --bg-fill /usr/share/wallpapers/wlasnyos.png &
+exec dwm
+EOF
+    chmod +x "${PKGDIR}/usr/bin/startx-wlasnyos"
+
+    # xinitrc
+    cat > "${PKGDIR}/etc/skel/.xinitrc" << 'EOF'
+#!/bin/sh
+xterm &
+feh --bg-fill /usr/share/wallpapers/wlasnyos.png &
+exec dwm
+EOF
+
+    # sesja desktop
+    cat > "${PKGDIR}/usr/share/xsessions/wlasnyos.desktop" << 'EOF'
+[Desktop Entry]
+Name=WlasnyOS
+Comment=Srodowisko graficzne WlasnyOS
+Exec=/usr/bin/startx-wlasnyos
+Type=Application
+EOF
+}

@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=freetype
+pkgver=2.13.2
+pkgrel=1
+pkgdesc="Biblioteka renderowania czcionek"
+arch=x86_64
+url="https://freetype.org/"
+depends=()
+source="https://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix=/usr CC=musl-gcc --with-zlib --without-harfbuzz
+    make -j$(nproc)
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${PKGDIR}" install
+}

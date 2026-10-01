@@ -1,0 +1,22 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=dejavu-fonts
+pkgver=2.37
+pkgrel=1
+pkgdesc="Czcionki DejaVu"
+arch=x86_64
+url="https://dejavu-fonts.github.io/"
+depends=()
+source="https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_${pkgver//./_}/dejavu-fonts-ttf-${pkgver}.tar.bz2"
+sha256sum="SKIP"
+
+build() {
+    # Brak kompilacji, tylko kopiowanie
+    true
+}
+
+package() {
+    mkdir -p "${PKGDIR}/usr/share/fonts/dejavu"
+    cp dejavu-fonts-ttf-${pkgver}/ttf/*.ttf "${PKGDIR}/usr/share/fonts/dejavu/"
+}

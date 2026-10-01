@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=st
+pkgver=0.9.2
+pkgrel=1
+pkgdesc="Prosty terminal (suckless)"
+arch=x86_64
+url="https://st.suckless.org/"
+depends=(libx11 libxft)
+source="https://dl.suckless.org/st/st-${pkgver}.tar.gz"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    sed -i 's/^CC = c99/CC = musl-gcc/' config.mk
+    make -j$(nproc)
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${PKGDIR}" PREFIX=/usr install
+}

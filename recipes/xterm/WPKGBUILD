@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=xterm
+pkgver=394
+pkgrel=1
+pkgdesc="Terminal X11"
+arch=x86_64
+url="https://invisible-island.net/xterm/"
+depends=(libx11)
+source="https://invisible-mirror.net/archives/xterm/xterm-${pkgver}.tgz"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix=/usr CC=musl-gcc
+    make -j$(nproc)
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${PKGDIR}" install
+}

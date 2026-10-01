@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=pixman
+pkgver=0.43.4
+pkgrel=1
+pkgdesc="Biblioteka operacji na pikselach"
+arch=x86_64
+url="https://cairographics.org/"
+depends=()
+source="https://cairographics.org/releases/pixman-${pkgver}.tar.gz"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix=/usr CC=musl-gcc
+    make -j$(nproc)
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${PKGDIR}" install
+}

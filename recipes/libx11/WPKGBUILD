@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=libx11
+pkgver=1.8.9
+pkgrel=1
+pkgdesc="Biblioteka X11"
+arch=x86_64
+url="https://xorg.freedesktop.org/"
+depends=(xorgproto xtrans libxcb)
+source="https://www.x.org/releases/individual/lib/libX11-${pkgver}.tar.xz"
+sha256sum="SKIP"
+
+build() {
+    cd "libX11-${pkgver}"
+    ./configure --prefix=/usr CC=musl-gcc
+    make -j$(nproc)
+}
+
+package() {
+    cd "libX11-${pkgver}"
+    make DESTDIR="${PKGDIR}" install
+}

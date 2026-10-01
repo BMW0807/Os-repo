@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=nano
+pkgver=8.1
+pkgrel=1
+pkgdesc="Prosty edytor tekstu"
+arch=x86_64
+url="https://nano-editor.org"
+depends=()
+source="https://www.nano-editor.org/dist/v8/nano-${pkgver}.tar.xz"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix=/usr --disable-nls --enable-utf8 CC=musl-gcc
+    make -j$(nproc)
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${PKGDIR}" install
+}

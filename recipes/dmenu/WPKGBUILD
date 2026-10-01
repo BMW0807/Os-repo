@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=dmenu
+pkgver=5.3
+pkgrel=1
+pkgdesc="Launcher aplikacji (suckless)"
+arch=x86_64
+url="https://tools.suckless.org/dmenu/"
+depends=(libx11 libxft)
+source="https://dl.suckless.org/tools/dmenu-${pkgver}.tar.gz"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    sed -i 's/^CC = cc/CC = musl-gcc/' config.mk
+    make -j$(nproc)
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${PKGDIR}" PREFIX=/usr install
+}

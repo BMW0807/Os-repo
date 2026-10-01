@@ -1,0 +1,31 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=mesa
+pkgver=24.0.5
+pkgrel=1
+pkgdesc="Biblioteka grafiki 3D (OpenGL)"
+arch=x86_64
+url="https://www.mesa3d.org/"
+depends=(libdrm)
+source="https://archive.mesa3d.org/mesa-${pkgver}.tar.xz"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    export CC=musl-gcc
+    export CXX=musl-g++
+    meson setup build --prefix=/usr \
+        -Dgallium-drivers=swrast \
+        -Dvulkan-drivers='' \
+        -Dglx=disabled \
+        -Degl=enabled \
+        -Dplatforms='' \
+        -Dopengl=true
+    ninja -C build
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    DESTDIR="${PKGDIR}" ninja -C build install
+}

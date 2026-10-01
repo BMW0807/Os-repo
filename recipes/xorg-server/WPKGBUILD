@@ -1,0 +1,28 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=xorg-server
+pkgver=21.1.13
+pkgrel=1
+pkgdesc="Serwer X.org (Xvfb + Xvesa)"
+arch=x86_64
+url="https://xorg.freedesktop.org/"
+depends=(pixman libdrm mesa)
+source="https://www.x.org/releases/individual/xserver/xorg-server-${pkgver}.tar.xz"
+sha256sum="SKIP"
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    export CC=musl-gcc
+    meson setup build --prefix=/usr \
+        -Dxwayland=false \
+        -Dxnest=false \
+        -Dxvfb=true \
+        -Dxkb_dir=/usr/share/X11/xkb
+    ninja -C build
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    DESTDIR="${PKGDIR}" ninja -C build install
+}

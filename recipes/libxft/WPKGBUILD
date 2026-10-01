@@ -1,0 +1,23 @@
+#!/bin/bash
+# Receptura pakietu dla wpkg
+
+pkgname=libxft
+pkgver=2.3.8
+pkgrel=1
+pkgdesc="Renderowanie czcionek X11"
+arch=x86_64
+url="https://xorg.freedesktop.org/"
+depends=(libx11 freetype fontconfig)
+source="https://www.x.org/releases/individual/lib/libXft-${pkgver}.tar.xz"
+sha256sum="SKIP"
+
+build() {
+    cd "libXft-${pkgver}"
+    ./configure --prefix=/usr CC=musl-gcc
+    make -j$(nproc)
+}
+
+package() {
+    cd "libXft-${pkgver}"
+    make DESTDIR="${PKGDIR}" install
+}
